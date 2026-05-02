@@ -1,96 +1,314 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Portfolio</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhav Prajapati - Web Developer & Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            font-family: Arial;
-            background: #f9f9f9;
-        }
-
-        .header {
-            background: #111;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        .hero h1 {
-            font-size: 45px;
-        }
-
-        .hero p {
-            color: gray;
-        }
-
-        .btn {
-            background: black;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 6px;
-            margin-top: 15px;
-        }
-
-        .projects {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            margin: 15px;
-            display: inline-block;
-            width: 250px;
-            border-radius: 10px;
-        }
+        * { font-family: 'Poppins', sans-serif; }
+        .hero-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .glass { background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .floating { animation: floating 6s ease-in-out infinite; }
+        @keyframes floating { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .slide-up { animation: slideUp 1s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        .card-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card-hover:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 25px 50px rgba(0,0,0,0.25); }
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
     </style>
 </head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white overflow-x-hidden">
 
-<body>
+<!-- Animated Background Particles -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.3),transparent)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(120,119,198,0.3),transparent)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_40%_40%,rgba(255,255,255,0.1),transparent)]"></div>
+</div>
 
-    <div class="header">
-        <h2>Madhav prajapati</h2>
-        <h3>Freelancer</h3>
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 glass px-6 py-4">
+    <div class="container mx-auto flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                <i class="fas fa-rocket text-white text-xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold gradient-text">Madhav</h2>
+        </div>
+        <div class="hidden md:flex space-x-8">
+            <a href="#home" class="hover:text-blue-300 transition-all font-medium">Home</a>
+            <a href="#projects" class="hover:text-blue-300 transition-all font-medium">Projects</a>
+            <a href="#contact" class="hover:text-blue-300 transition-all font-medium">Contact</a>
+        </div>
+        <a href="mailto:madhav@example.com" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-3 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all">
+            <i class="fas fa-paper-plane mr-2"></i>Hire Me
+        </a>
     </div>
+</nav>
 
-    <div class="hero">
-        <h1>Hello, I'm a Web Developer 🚀</h1>
-        <p>I’m a passionate freelance web designer creating modern, clean, and user-friendly websites for restaurants, gyms, hotels, and cafés. I focus on elegant design, smooth performance, and helping businesses build a strong and attractive online presence.</p>
-        <button class="btn">Hire Me</button>
+<!-- Hero Section -->
+<section id="home" class="min-h-screen flex items-center justify-center pt-20 px-4 relative">
+    <div class="container mx-auto text-center max-w-4xl">
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl floating"></div>
+        <div class="absolute bottom-32 right-20 w-32 h-32 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-xl floating" style="animation-delay: -2s;"></div>
+        
+        <div class="relative z-10">
+            <!-- Profile Image -->
+            <div class="mx-auto w-48 h-48 mb-8 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 glass">
+                <img src="https://images.unsplash.com/photo-1728218948405-d749e7d1851e?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=milad-fakurian-y_biCdZ5atA-unsplash.jpg" alt="Madhav Prajapati" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+            </div>
+            <h1 class="text-6xl md:text-7xl font-black mb-6 gradient-text slide-up">MADHAV</h1>
+            <h2 class="text-2xl md:text-3xl mb-8 font-bold text-white/80 slide-up" style="animation-delay: 0.2s;">Web Developer & Designer</h2>
+            
+            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-white/70 slide-up" style="animation-delay: 0.4s;">
+                Crafting stunning, modern websites for <span class="gradient-text font-semibold">restaurants, gyms, hotels & cafés</span>. 
+                Passionate about clean code, elegant design & exceptional user experiences 🚀
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 slide-up" style="animation-delay: 0.6s;">
+                <a href="#projects" class="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-12 py-4 rounded-3xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                    <i class="fas fa-eye mr-2 group-hover:translate-x-1 transition-transform"></i>
+                    View Projects
+                </a>
+            </div>
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 slide-up" style="animation-delay: 0.8s;">
+                <div class="text-center">
+                    <div class="text-4xl font-black gradient-text">5+</div>
+                    <div class="text-sm text-white/70 uppercase tracking-wider">Projects</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-black gradient-text">100%</div>
+                    <div class="text-sm text-white/70 uppercase tracking-wider">Satisfaction</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-black gradient-text">5+</div>
+                    <div class="text-sm text-white/70 uppercase tracking-wider">Clients</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-black gradient-text">2+</div>
+                    <div class="text-sm text-white/70 uppercase tracking-wider">Years Exp</div>
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="flex justify-center space-x-6 slide-up" style="animation-delay: 1s;">
+                <a href="#" class="w-14 h-14 bg-white/10 hover:bg-white/20 rounded-2xl flex items-center justify-center text-xl hover:scale-125 transition-all duration-300">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="w-14 h-14 bg-white/10 hover:bg-white/20 rounded-2xl flex items-center justify-center text-xl hover:scale-125 transition-all duration-300">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="w-14 h-14 bg-white/10 hover:bg-white/20 rounded-2xl flex items-center justify-center text-xl hover:scale-125 transition-all duration-300">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="w-14 h-14 bg-white/10 hover:bg-white/20 rounded-2xl flex items-center justify-center text-xl hover:scale-125 transition-all duration-300">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
     </div>
+</section>
 
-    <div class="projects">
-        <h2>My Projects</h2>
-
-        <div class="card">
-            <h3>Project 1</h3>
-            <p>Landing page design</p>
-            <a href=" https://madhavprajapati1308-cyber.github.io/landing-page/">Visit my landing-page</a>
+<!-- Projects Section -->
+<section id="projects" class="py-32 px-4 relative">
+    <div class="container mx-auto max-w-6xl">
+        <!-- Section Title -->
+        <div class="text-center mb-24">
+            <h2 class="text-5xl md:text-6xl font-black mb-6 gradient-text">Featured Projects</h2>
+            <p class="text-xl text-white/70 max-w-2xl mx-auto">Handcrafted websites that deliver exceptional user experiences</p>
         </div>
 
-        <div class="card">
-            <h3>Project 2</h3>
-            <p>Business website</p>
-            <a href="https://shudhgabadchaat-max.github.io/my-restaurant-website/">Visit My Business</a>
-        </div>
+        <!-- Projects Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <a href="https://madhavprajapati1308-cyber.github.io/landing-page/" target="_blank" class="group card-hover block bg-white/10 glass rounded-3xl p-8 hover:bg-white/20 transition-all duration-500 overflow-hidden scroll-reveal">
+                <div class="relative mb-6">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop" alt="Landing Page" class="w-full h-48 object-cover rounded-2xl group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                        <h3 class="text-xl font-bold mb-2">Restaurant Landing</h3>
+                        <p class="text-sm text-white/80">Modern restaurant website</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">landing-page</h3>
+                    <p class="text-white/70 mb-6">Responsive landing page with smooth animations and modern design for food business</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="font-bold text-blue-400 hover:text-blue-300 transition-colors">Live Demo →</span>
+                    </div>
+                </div>
+            </a>
 
-        <div class="card">
-            <h3>Project 3</h3>
-            <p>E-commercial website</p>
-            <a href=" https://madhavprajapati1308-cyber.github.io/HomeKitch/">Visit My E-commercial Website</a>
-        </div>
+            <!-- Project 2 -->
+            <a href="https://shudhgabadchaat-max.github.io/my-restaurant-website/" target="_blank" class="group card-hover block bg-white/10 glass rounded-3xl p-8 hover:bg-white/20 transition-all duration-500 overflow-hidden scroll-reveal" style="animation-delay: 0.1s;">
+                <div class="relative mb-6">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop" alt="Business Website" class="w-full h-48 object-cover rounded-2xl group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">Business Website</h3>
+                    <p class="text-white/70 mb-6">Complete business solution with booking system and modern UI</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="font-bold text-purple-400 hover:text-purple-300 transition-colors">View Project →</span>
+                    </div>
+                </div>
+            </a>
 
+            <!-- Project 3 -->
+            <a href="https://madhavprajapati1308-cyber.github.io/HomeKitch/" target="_blank" class="group card-hover block bg-white/10 glass rounded-3xl p-8 hover:bg-white/20 transition-all duration-500 overflow-hidden scroll-reveal" style="animation-delay: 0.2s;">
+                <div class="relative mb-6">
+                    <img src="https://images.unsplash.com/photo-1574169208507-84376144848b?w=500&h=300&fit=crop" alt="E-commerce" class="w-full h-48 object-cover rounded-2xl group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-3 group-hover:text-emerald-400 transition-colors">E-Commerce Store</h3>
+                    <p class="text-white/70 mb-6">Full-featured online store with cart, payments & responsive design</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="font-bold text-emerald-400 hover:text-emerald-300 transition-colors">Shop Now →</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Additional Showcase Projects -->
+            <div class="lg:col-span-3 scroll-reveal" style="animation-delay: 0.3s;">
+                <a href="#" class="group block bg-gradient-to-r from-gray-800/50 to-gray-700/50 glass rounded-3xl p-12 text-center hover:bg-white/20 transition-all duration-500 card-hover">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                        <div class="text-center p-6 bg-white/10 rounded-2xl">
+                            <i class="fas fa-hotel text-4xl text-blue-400 mb-4"></i>
+                            <h4 class="font-bold text-xl">Hotel Websites</h4>
+                        </div>
+                        <div class="text-center p-6 bg-white/10 rounded-2xl">
+                            <i class="fas fa-utensils text-4xl text-orange-400 mb-4"></i>
+                            <h4 class="font-bold text-xl">Restaurant Sites</h4>
+                        </div>
+                        <div class="text-center p-6 bg-white/10 rounded-2xl">
+                            <i class="fas fa-dumbbell text-4xl text-purple-400 mb-4"></i>
+                            <h4 class="font-bold text-xl">Gym Websites</h4>
+                        </div>
+                        <div class="text-center p-6 bg-white/10 rounded-2xl">
+                            <i class="fas fa-coffee text-4xl text-yellow-400 mb-4"></i>
+                            <h4 class="font-bold text-xl">Café Portals</h4>
+                        </div>
+                    </div>
+                    <h3 class="text-3xl font-black mb-4 gradient-text">More Amazing Projects Coming Soon!</h3>
+                    <p class="text-xl text-white/70 mb-8">Specializing in business websites that convert visitors to customers</p>
+                    <div class="inline-flex items-center bg-white/20 backdrop-blur-sm px-8 py-4 rounded-2xl font-bold hover:bg-white/30 transition-all">
+                        <i class="fas fa-sparkles mr-3"></i>
+                        Get Your Custom Website
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-32 px-4 bg-gradient-to-t from-black/50 to-transparent">
+    <div class="container mx-auto max-w-4xl text-center">
+        <div class="scroll-reveal">
+            <h2 class="text-5xl md:text-6xl font-black mb-6 gradient-text">Let's Create Something Amazing</h2>
+            <p class="text-xl text-white/70 mb-12 max-w-2xl mx-auto">Ready to transform your business with a stunning website? Let's talk!</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class=" <div class="glass p-8 rounded-3xl hover:scale-105 transition-all duration-500">
+                    <div class="w-20 h-20 bg-blue-500 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Email</h4>
+                    <p class="text-white/70 mb-4">madhavprajapati1308@gmail..com</p>
+                    <a href="mailto:madhav@example.com" class="text-blue-400 hover:text-blue-300 font-bold">Send Message</a>
+                </div>
+                <div class="glass p-8 rounded-3xl hover:scale-105 transition-all duration-500">
+                    <div class="w-20 h-20 bg-green-500 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">WhatsApp</h4>
+                    <p class="text-white/70 mb-4">+91 9873197759</p>
+                    <a href="https://wa.me/91+9873197759" class="text-green-400 hover:text-green-300 font-bold">Start Chat</a>
+                </div>
+                <div class="glass p-8 rounded-3xl hover:scale-105 transition-all duration-500">
+                    <div class="w-20 h-20 bg-purple-500 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-file-alt text-2xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Portfolio</h4>
+                    <p class="text-white/70 mb-4">View all projects</p>
+                    <a href="#" class="text-purple-400 hover:text-purple-300 font-bold">Full Portfolio</a>
+                </div>
+            </div>
+            
+            <div class="glass p-12 rounded-3xl max-w-2xl mx-auto">
+                <h3 class="text-3xl font-bold mb-6">Get Your Free Quote Today</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <input type="text" placeholder="Your Name" class="bg-white/20 border border-white/30 rounded-2xl px-6 py-4 text-white placeholder-white/60 focus:outline-none focus:border-blue-400">
+                    <input type="email" placeholder="Your Email" class="bg-white/20 border border-white/30 rounded-2xl px-6 py-4 text-white placeholder-white/60 focus:outline-none focus:border-blue-400">
+                </div>
+                <textarea rows="4" placeholder="Tell me about your project..." class="w-full bg-white/20 border border-white/30 rounded-2xl px-6 py-4 text-white placeholder-white/60 focus:outline-none focus:border-blue-400 resize-none"></textarea>
+                <button class="w-full mt-8 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-12 py-6 rounded-3xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-500">
+                    <i class="fas fa-paper-plane mr-3"></i>Send Message
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-12 border-t border-white/10">
+    <div class="container mx-auto px-4 text-center">
+        <div class="flex items-center justify-center space-x-6 mb-8">
+            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
+                <i class="fas fa-rocket text-white"></i>
+            </div>
+            <h3 class="text-2xl font-bold gradient-text">Madhav Prajapati</h3>
+        </div>
+        <p class="text-white/60 mb-8">© 2024 Madhav Prajapati. Crafting digital experiences that inspire.</p>
+        <div class="flex justify-center space-x-6 text-xl">
+            <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-github"></i></a>
+            <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="hover:text-green-400 transition-colors"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Scroll reveal animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
